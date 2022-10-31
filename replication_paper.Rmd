@@ -1,0 +1,86 @@
+---
+title: "replication_mrrd_paper"
+output: html_document
+date: "2022-10-31"
+---
+
+
+```{r loading libraries}
+library("haven")
+library("rddensity")
+library("rdrobust")
+library("miceadds")
+library("rdd")
+library("estimatr")
+rm(list = ls())
+```
+
+```{r US House data}
+data <- read_dta("./data/US_House_CS_data.dta")
+data <- data[data$Use == 1,]
+
+# DifDPct is the vote share margin of Deomocratic party
+data$inc_margin_original <- data$DifDPct
+result <- rddensity::rddensity(X = data$inc_margin_original)
+summary(result)
+cat("density at right: ",result$hat$right)
+cat("density at left: ",result$hat$left)
+cat("tau statistic: ",1-result$hat$left/result$hat$right)
+result <- rddensity::rdplotdensity(rdd = result,X = data$inc_margin_original)
+summary(result)
+
+# inc_margin is constructed by flipping the sign if Dem is not incumbent
+# thus inc_margin is the vote share margin of incumbent party candidate
+data$inc_margin <- (-1^(data$DWinPrv)) * data$DifDPct
+result <- rddensity::rddensity(X = data$inc_margin)
+summary(result)
+cat("density at right: ",result$hat$right)
+cat("density at left: ",result$hat$left)
+cat("tau statistic: ",1-result$hat$left/result$hat$right)
+result <- rddensity::rdplotdensity(rdd = result,X = data$inc_margin)
+summary(result)
+```
+
+```{r Romania School data}
+# Data
+data_raw <- read_dta("./data/Romania_PU_AER_data.dta")
+data_romania <- data.frame(
+  dzag=data_raw$dzag,
+  bcg=data_raw$bcg,
+  sid2=data_raw$sid2,
+  zga=data_raw$zga,
+  nusua=data_raw$nusua,
+  uazY=data_raw$uazY)
+data_sub_plus <- data_romania
+data_sub_plus[data_sub_plus$zga < 7.74,] <- NA
+data_sub_plus <- na.omit(data_sub_plus)
+
+data_two_towns <- data_romania
+data_two_towns[data_two_towns$nusua != 2,] <- NA
+data_two_towns <- na.omit(data_two_towns)
+
+result <- rddensity::rddensity(X = data_romania$dzag)
+summary(result)
+cat("density at right: ",result$hat$right)
+cat("density at left: ",result$hat$left)
+cat("tau statistic: ",1-result$hat$left/result$hat$right)
+result <- rddensity::rdplotdensity(rdd = result,X = data_romania$dzag)
+summary(result)
+
+result <- rddensity::rddensity(X = data_sub_plus$dzag)
+summary(result)
+cat("density at right: ",result$hat$right)
+cat("density at left: ",result$hat$left)
+cat("tau statistic: ",1-result$hat$left/result$hat$right)
+result <- rddensity::rdplotdensity(rdd = result,X = data_sub_plus$dzag)
+summary(result)
+
+
+result <- rddensity::rddensity(X = data_two_towns$dzag)
+summary(result)
+cat("density at right: ",result$hat$right)
+cat("density at left: ",result$hat$left)
+cat("tau statistic: ",1-result$hat$left/result$hat$right)
+result <- rddensity::rdplotdensity(rdd = result,X = data_two_towns$dzag)
+summary(result)
+```
