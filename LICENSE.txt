@@ -4,10 +4,12 @@ GPL-2 (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html.en#SEC1)
 Creative Commons Attribution 4.0 International Public License
 (https://creativecommons.org/licenses/by/4.0/)
 - applies to the dataset, 112645-V1/data/data-AER-1.dta and data-AER-1.csv
+COPYRIGHT 2013 American Economic Association
 
 CC0 1.0 Universal
 (https://creativecommons.org/publicdomain/zero/1.0/legalcode.en)
 - applies to the dataset, dataverse_files/RDReplication.dta and RDReplication.csv
+
 
 =================================================================
 GNU GENERAL PUBLIC LICENSE Version 2
