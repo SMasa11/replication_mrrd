@@ -61,7 +61,7 @@ Datafile:  `RDReplication.dta`
 
 ### Code
 
-Code for data cleaning and analysis is provided as part of the replication package. It is available at https://github.com/SMasa11/replication_mrrd for review. It will be uploaded to the Econometric Society once the paper has been conditionally accepted.
+Code for data cleaning and analysis is provided as part of the replication package. It is also available at https://github.com/SMasa11/replication_mrrd for review. It will be uploaded to the Econometric Society once the paper has been conditionally accepted. The datasets are too large to store directly in GitHub repository and they are stored through `git lfs`. Please contact the maintainer for any questions.
 
 ## Dataset list
 
@@ -148,7 +148,7 @@ CAUGHEY, DEVIN AND JASJEET S. SEKHON (2011a): “Elections and the Regression Di
 Lessons from Close U.S. House Races, 1942–2008,” Political Analysis, 19 (4), 385–408. 
 
 ——— (2011b): “Replication data for: Elections and the Regression-
-Discontinuity Design: Lessons from Close U.S. House Races, 1942-2008,” DOI: 10.7910/DVN/8EYYA
+Discontinuity Design: Lessons from Close U.S. House Races, 1942-2008,” DOI: 10.7910/DVN/8EYYA2.
 
 POP-ELECHES, CRISTIAN AND MIGUEL URQUIOLA (2013a): “Going to a Better School: Effects and Behavioral
 Responses,” American Economic Review, 103 (4), 1289–1324.
